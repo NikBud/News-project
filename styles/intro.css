@@ -1,0 +1,164 @@
+body {
+    background-image: url('/home/ruslan/Рабочий стол/point_project/Nice-capitale.jpg'); 
+}
+
+
+
+div#Introduction {
+  text-align: center;
+  
+}
+
+
+#point {
+    position: relative;
+    top: 0;
+    left: 0;
+    max-width: 10%; 
+
+}
+
+
+
+
+
+
+.container {
+  display: flex; /* Размещаем дочерние элементы в строку */
+  border-top: 10px solid black; /* Полоса сверху контейнера */
+  margin: 20px auto; /* Размещение по центру */        
+}
+
+
+
+.item {
+  margin: 10px; /* Добавляем отступы между элементами */
+  padding: 20px; /* Добавляем внутренние отступы для лучшего визуального отображения */
+  margin: 0px auto;
+
+}
+
+
+.word_1, .word_2, .word_3 {	
+  cursor: pointer;
+  color: white;
+  margin: 10px ; /* Добавляем отступы между элементами */
+  padding: 20px;
+  
+    
+}
+
+
+.word-list_1 li, .word-list_2 li, .word-list_3 li{
+  list-style-type: none;
+  padding-left: 0;
+  margin-bottom: 25px;
+  color: black;
+  
+  border-bottom: 1px solid black; /* Граница под текстом "Actualité" */
+  padding-bottom: 10px; /* Отступ под текстом "Actualité" */
+  margin-bottom: 10px; /* Отступ между блоками */
+
+  text-align: center;  
+  
+}
+
+
+
+
+
+
+
+
+
+.city-link:hover {
+    color: red; /* Change to the desired color */
+}
+
+.word_1:hover, .word_2:hover, .word_3:hover {
+    color: red; /* Change to the desired color */
+}
+
+
+
+
+
+
+
+
+.city-image {
+    width: 550px; /* Change the width to your desired size */
+    height: auto; /* Maintain aspect ratio */
+    
+}
+
+
+
+
+
+
+
+
+.tous_sujets {
+    width: 70%;
+    height: 100%;
+    background-color: white; /* Березовый цвет фона */  
+    display: flex;
+    justify-content: center; /* Aligner l'élément au centre horizontalement */
+    align-items: center;
+    margin: 0px auto; 
+    
+}
+
+
+.tous_sujets img {
+    margin-right: 100px; /* Décaler l'image de 20 pixels vers la gauche (ajustez selon vos besoins) */
+}
+
+
+
+
+.side-images {
+    display: flex;
+    width: 500px;
+    height: 280px;
+    
+}
+
+.side-images img {
+     /* La largeur de l'image ne doit pas dépasser la largeur de son conteneur */
+    height: auto; /* Hauteur automatique pour conserver les proportions de l'image */
+    margin: 0px; /* Espacement horizontal entre les images latérales */
+}
+
+
+
+
+.sujet_1 {
+	
+	word-wrap: break-word;
+	width: 635px; /* Pour l'exemple, limitons la largeur du conteneur */
+	
+}
+    	
+
+.sujet_2 {
+	word-wrap: break-word;
+	width: 460px; /* Pour l'exemple, limitons la largeur du conteneur */
+}
+
+
+
+
+
+
+
+h1 {
+	font-size: 20px; /* Замените 24px на желаемый размер шрифта */
+ }
+ 
+ 
+
+h2 {
+	font-size: 17px; /* Замените 24px на желаемый размер шрифта */
+ }
