@@ -50,7 +50,6 @@
     }
 
     $response = array();
-    $response["yo"] = "caught request!";
 
     if(isset($_POST["email"])){
         $exists = loginOK($_POST["email"], $_POST["password"]);

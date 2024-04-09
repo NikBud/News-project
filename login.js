@@ -2,8 +2,8 @@ window.onload = () => {
     var form = document.getElementById("loginForm");
 
     form.addEventListener("submit", async function(event) {
-        event.preventDefault();
-        var formData = new FormData(form);
+        // event.preventDefault();
+        // var formData = new FormData(form);
 
         await fetch("http://localhost:3000/login.php", {
             method: "POST",
