@@ -1,9 +1,10 @@
 form{
     background-color: beige;
-    height: 100vh;
+    height: 110vh;
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 
 #container{
@@ -14,31 +15,44 @@ form{
     color: black;
     border: 3px gray solid;
     border-radius: 15px;
-    height: 70%;
-    width: 30%;
+    width: 35%;
 }
 
 #inputs{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    height: 45%;
+    width: 100%;
 }
 
 #inputs input{
     height: 2em;
     margin-bottom: 0.5em;
+    width: 55%;
 }
 
 #inputs a{
     font-size: 0.8em;
 }
 
+#invalidCredentials{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 1em;
+    height: 3em;
+    width: 55%;
+    background-color: #FFA6A6;
+    border: 3px red solid;
+    border-radius: 5px;
+    font-size: 0.9em;
+}
+
 #img-container{
     margin-left: 0.6rem;
     margin-top: 12%;
-    height: 8em;
+    height: 5em;
 }
 
 #buttons{
@@ -57,4 +71,19 @@ img{
     border: none;
     border-radius: 5px;
     color: white;
+}
+
+select{
+    margin-top: 0.6em;
+    margin-bottom: 1em;
+    width: 80%;
+}
+
+#security-answer{
+    display: none;
+    text-align: center;
+}
+
+#security-answer p{
+    color: #FC3636;
 }

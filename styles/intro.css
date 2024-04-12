@@ -26,7 +26,8 @@ div#Introduction {
 .container {
   display: flex; /* Размещаем дочерние элементы в строку */
   border-top: 10px solid black; /* Полоса сверху контейнера */
-  margin: 20px auto; /* Размещение по центру */        
+  margin: 20px auto; /* Размещение по центру */
+  color: black;        
 }
 
 
@@ -41,11 +42,8 @@ div#Introduction {
 
 .word_1, .word_2, .word_3 {	
   cursor: pointer;
-  color: white;
   margin: 10px ; /* Добавляем отступы между элементами */
   padding: 20px;
-  
-    
 }
 
 

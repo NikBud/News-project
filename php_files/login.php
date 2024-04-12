@@ -1,7 +1,7 @@
 <?php
 
     function get($login){
-        $open = fopen("users.csv", "r");
+        $open = fopen("../csv_files/users.csv", "r");
         if (!$open){
             return NULL;
         }
@@ -9,9 +9,9 @@
         
         while (($data = fgetcsv($open, 1000, ",")) !== FALSE) 
         {
-            if ($data[0] == $login){
+            if ($data[2] == $login){
                 fclose($open);
-                return $data[1];
+                return $data[3];
             }
         }
         fclose($open);
@@ -19,7 +19,7 @@
     }
 
     function exist($login){
-        $open = fopen("users.csv", "r");
+        $open = fopen("../csv_files/users.csv", "r");
         if (!$open){
             return FALSE;
         }
@@ -27,7 +27,7 @@
         
         while (($data = fgetcsv($open, 1000, ",")) !== FALSE) 
         {
-            if ($data[0] == $login){
+            if ($data[2] == $login){
                 fclose($open);
                 return TRUE;
             }
@@ -49,16 +49,21 @@
         return FALSE;
     }
 
+    session_start();
     $response = array();
-    $response["yo"] = "caught request!";
 
-    if(isset($_POST["email"])){
-        $exists = loginOK($_POST["email"], $_POST["password"]);
+    if($_SERVER["REQUEST_METHOD"] === "POST"){
+        $json_data = file_get_contents("php://input");
+        $data = json_decode($json_data, true);
+
+        $response["credentialsOk"] = 0;
+        $exists = loginOK($data["email"], $data["password"]);
         if($exists === TRUE){
             $response["credentialsOk"] = 1;
         }
     }
 
+    
     header('Content-Type: application/json');
     echo json_encode($response);
 ?>
