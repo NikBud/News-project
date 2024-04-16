@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create post</title>
+    <link rel="stylesheet" type="text/css" href="../styles/createPost.css"></head>
+    <script src="../scripts/app.js"></script>
+<body>
+    <h1>Laissez vous guider pour créer votre petite annonce à paraître sur le site</h1>
+    
+    <form id="feedbackForm">
+        <!-- Использование placeholder в элементе input -->
+        <label for="name"></label>
+        <input type="text" id="name" name="name" required placeholder="Prénom">
+        
+        <label for="name"></label>
+        <input type="text" id="titre" name="titre" required placeholder="Titre de l'annonce">
+
+        <label for="news"></label>
+        <textarea id="news" name="news" required placeholder="Écrivez votre annonce ici..."></textarea>
+
+        <button type="submit"> Valider</button>
+    </form>
+    
+    <div id="reponseContaineur"></div>
+    
+</body>
+</html>
+
+
+
