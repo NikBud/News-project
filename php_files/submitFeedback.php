@@ -17,7 +17,7 @@
         createRecordCSV($data);
         $name = $data["vals"][0];
         $response = [
-            'message' => "Спасибо, {$name}! Ваш отзыв был получен."
+            "message" => "Спасибо, {$name}! Ваш отзыв был получен."
         ];
     }
 

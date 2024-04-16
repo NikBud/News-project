@@ -1,60 +1,39 @@
 body {
     background-image: url('../images/Nice-capitale.jpg'); 
-    margin: 0px;
+    margin: 0%;
 }
-
-
-
-
 
 .container {
   display: flex; 
-
   position: fixed;
-
-
   background-color: hwb(208 0% 0%); 
   text-align: center;  
-  margin: 0px auto; 
+  margin: 0%;
+  top: 0;
   width: 100%;	  
   justify-content: center; 
-     
 }
 
-
-
-
-
-
-
 .image_point{
-
   text-align: center;  
   width: 100%;
   margin: 25px;	
 }
 
-
 .panel{
-
   display: flex; 
   width: 100%;	
-  
-
 }
 
-
-.word_1, .word_2, .word_3 {	
+.options {	
   cursor: pointer;
   color: white;
   margin: 10px ; 
-  padding: 20px;
-  
-    
+  padding: 20px;   
 }
 
 
-.word-list_1 li, .word-list_2 li, .word-list_3 li{
+.list li{
   list-style-type: none;
   padding-left: 0;
   margin-bottom: 25px;
@@ -68,32 +47,13 @@ body {
   
 }
 
-
-
-
-
-
-
-
-
 .city-link:hover {
     color: red; 
 }
 
-.word_1:hover, .word_2:hover, .word_3:hover {
+.options:hover {
     color: red; 
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 .bord {
@@ -102,9 +62,9 @@ body {
     width: 80%;
     align-items: center;  
     justify-content: center;
-    
-    margin: 10% auto; 
-    margin-top: 5%; 
+    margin-top: 7%; 
+    margin-left: 10%;
+    margin-right: 10%;    
 }
 
 
@@ -127,26 +87,17 @@ body {
     margin-right: 50px;
 }
 
-
-
-
-
-
-
 h1 {
 	
 	word-wrap: break-word;
 	width: 635px; 
 	
 }
-    	
-
 
 
 h1 {
 	font-size: 20px; 
  }
- 
  
 
 h2 {
