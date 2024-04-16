@@ -1,42 +1,17 @@
-document.addEventListener('DOMContentLoaded', function() {
-  const word = document.querySelector('.word_1');
-  const wordList = document.querySelector('.word-list_1');
-  
-  word.addEventListener('click', function() {
-    if (wordList.style.display === 'none' || wordList.style.display === '') {
-      wordList.style.display = 'block';
-    } else {
-      wordList.style.display = 'none';
-    }
-  });
-});
-
-
-
-document.addEventListener('DOMContentLoaded', function() {
-  const word = document.querySelector('.word_2');
-  const wordList = document.querySelector('.word-list_2');
-  
-  word.addEventListener('click', function() {
-    if (wordList.style.display === 'none' || wordList.style.display === '') {
-      wordList.style.display = 'block';
-    } else {
-      wordList.style.display = 'none';
-    }
-  });
-});
-
-
-document.addEventListener('DOMContentLoaded', function() {
-  const word = document.querySelector('.word_3');
-  const wordList = document.querySelector('.word-list_3');
-  
-  word.addEventListener('click', function() {
-    if (wordList.style.display === 'none' || wordList.style.display === '') {
-      wordList.style.display = 'block';
-    } else {
-      wordList.style.display = 'none';
-    }
-  });
-});
+window.onload = () => {
+  const options = document.getElementsByClassName('options');
+    
+  for(var i = 0; i < options.length; i++){
+    let element = options[i];
+    element.addEventListener('click', function() {
+      var child = element.firstElementChild;
+      if (child.style.display === 'none' || child.style.display === '') {
+        child.style.display = 'block';
+      } 
+      else {
+        child.style.display = 'none';
+      }
+    });
+  }; 
+}
 
