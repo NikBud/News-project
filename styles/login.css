@@ -50,8 +50,8 @@ form{
 }
 
 #img-container{
-    margin-left: 0.6rem;
-    margin-top: 12%;
+    margin-top: 0%;
+    margin-bottom: 20%;
     height: 5em;
 }
 
@@ -61,7 +61,7 @@ form{
 }
 
 img{
-    width: 8em;
+    width: 13em;
 }
 
 #buttons input{
