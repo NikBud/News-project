@@ -1,7 +1,7 @@
 <?php
 
     function createRecordCSV($data){
-        $open = fopen("../csv_files/posts.csv", "a");
+        $open = fopen("../csv_files/news.csv", "a");
         fputcsv($open, $data["vals"]);
         fclose($open);
         return TRUE;
@@ -13,11 +13,11 @@
     if($_SERVER["REQUEST_METHOD"] === "POST"){
         $json_data = file_get_contents("php://input");
         $data = json_decode($json_data, true);
-
+        $data['vals'][] = date('d/m/Y');
+        
         createRecordCSV($data);
-        $name = $data["vals"][0];
         $response = [
-            "message" => "Спасибо, {$name}! Ваш отзыв был получен."
+            "message" => "Спасибо! Ваша статья успешно добавлена."
         ];
     }
 

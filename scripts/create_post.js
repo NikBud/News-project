@@ -20,8 +20,8 @@ async function sendRequest(formData){
     })
     .then(response => response.json())
     .then(data => {
-        
         document.getElementById('reponseContaineur').innerHTML = `<p>${data.message}</p>`;
+        window.location.replace("../html/main.html");
     })
     .catch(error => console.error('Ошибка:', error));
 }
@@ -36,7 +36,7 @@ window.onload = () => {
         var obj = {
             "vals" : Object.values(formDict)
         }
-        await sendRequest(JSON.stringify(obj));
+        await sendRequest(JSON.stringify(obj) + "\n");
 
     });
 }

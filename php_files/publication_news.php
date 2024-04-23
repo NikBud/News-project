@@ -6,7 +6,8 @@ if (($handle = fopen("../csv_files/news.csv", "r")) !== false) {
         $newsData[] = [
             'image' => $data[2],
             'title' => $data[0], 
-            'content' => $data[1] 
+            'content' => $data[1],
+            'date' => $data[3]
         ];
     }
     fclose($handle);
