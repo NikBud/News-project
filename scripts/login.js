@@ -38,7 +38,7 @@ window.onload = () => {
             else{
                 incorrectCredentials.style.display = "none";
                 localStorage.setItem("loggedin", "true");
-                localStorage.setItem("user", dictData);
+                localStorage.setItem("user", dictData["email"]);
                 window.location.replace("../html/main.html");
             }
         })
