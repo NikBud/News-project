@@ -5,8 +5,7 @@ function transformToJSON(pureForm){
         formDataObject[key] = value;
     });
 
-    // Преобразуем объект данных в JSON
-    return JSON.stringify(formDataObject);
+    return formDataObject;
 }
 
 window.onload = () => {
@@ -14,8 +13,8 @@ window.onload = () => {
 
     form.addEventListener("submit", async function(event) {
         event.preventDefault();
-        
-        var jsonData = transformToJSON(form);
+        var dictData = transformToJSON(form);
+        var jsonData = JSON.stringify(dictData);
 
         await fetch("../php_files/login.php", {
             method: "POST",
@@ -32,13 +31,15 @@ window.onload = () => {
         })
         .then(function(data){
             var res = data["credentialsOk"];
-            console.log(res);
             var incorrectCredentials = document.getElementById("invalidCredentials");
             if (res == 0){
                 incorrectCredentials.style.display = "flex";
             }
             else{
                 incorrectCredentials.style.display = "none";
+                localStorage.setItem("loggedin", "true");
+                localStorage.setItem("user", dictData);
+                window.location.replace("../html/main.html");
             }
         })
     })
