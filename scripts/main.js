@@ -19,13 +19,27 @@ controlImagesOptions = [
     "../images/color_circle.png"
 ]
 
-function fetchAndDisplayNews() {
-    fetch('../php_files/publication_news.php') 
+function fetchAndDisplayNews(searchStr) {
+    fetch(`../php_files/publication_news.php?search=${searchStr}&theme=${localStorage.getItem("theme")}`)
         .then(response => response.json()) 
         .then(data => {
 
             const container = document.getElementById('content-container');
-          
+            var articles = container.querySelectorAll('.article');
+            let infoDiv = document.getElementById("noResults");
+
+            articles.forEach(function(article) {
+                container.removeChild(article);
+            });
+            
+            if (data.length == 0){
+                infoDiv.innerText = "Sorry, your search returned no results :(";
+                infoDiv.style.display = "block";
+            }
+            else{
+                infoDiv.style.display = "none";
+            }
+
             data.forEach(news => {
                 const article = document.createElement('div');
                 article.className = 'article';
@@ -88,7 +102,6 @@ function createInterval(startIndex, items, controlButtons){
         items[nextIndex].style.opacity = "1";
         controlButtons[nextIndex].src = "../images/color_circle.png";
         
-        // carousel.style.height = items[nextIndex].clientHeight + 'px';
         index = nextIndex;
     }, 5000);
 }
@@ -97,7 +110,6 @@ function carouselStart(){
     const carousel = document.getElementById("carousel");
     let index = 0;
 
-    // Создаем и добавляем изображения в карусель
     for(var i = 0; i < carouselImages.length; i++){
         let carouselItem = document.createElement("div");
         carouselItem.className = "carousel-item";
@@ -116,14 +128,12 @@ function carouselStart(){
         carousel.appendChild(carouselItem);
     }
 
-    // Получаем все элементы в карусели
     createControlImages();
     const items = carousel.querySelectorAll(".carousel-item");
     const controlButtons = document.getElementsByClassName("control-img");
-    items[0].classList.add("active"); // Установите класс active для первого элемента
+    items[0].classList.add("active");
     items[0].style.opacity = "1";
     controlButtons[0].src = "../images/color_circle.png";
-    // carousel.style.height = items[0].clientHeight + 'px';
 
 
     interval = createInterval(0, items, controlButtons);
@@ -251,11 +261,42 @@ function showImage() {
 
 
 window.onload = () => {
+    if (!localStorage.getItem("theme")){
+        localStorage.setItem("theme", "Toutes");
+    }
+
     carouselStart();
-    fetchAndDisplayNews();
+    fetchAndDisplayNews("");
     var cityInput = document.getElementById("city");
     cityInput.value = "Nice";
     getWeather();
+
+
+    var searchInput = document.getElementById("searchInput");
+    searchInput.addEventListener("input", () => {
+        let txt = searchInput.value;
+        fetchAndDisplayNews(txt);
+    });
+
+
+    let contentContainer = document.getElementById("content-container");
+    document.getElementById("contentSearchBtn").addEventListener("click", () => {
+        contentContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+
+    let themes = document.querySelectorAll("#themes-container p");
+    
+    for(let theme of themes){
+        theme.addEventListener("click", () => {
+            let txt = theme.innerText;
+            console.log(txt);
+            localStorage.setItem("theme", txt);
+            fetchAndDisplayNews("");
+            contentContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    }
+
 
     var loginBtn = document.getElementById("btn");
     var addNewsBtn = document.getElementById("addArticle");
@@ -263,7 +304,6 @@ window.onload = () => {
     
     if(isLoggedIn){
         loginBtn.innerText = "Logout";
-        // loginBtn.style.backgroundColor = "#FA4351";
         loginBtn.style.backgroundColor = "#EDDA3C";
         loginBtn.style.color = "black";
     }

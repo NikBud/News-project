@@ -1,10 +1,14 @@
+let themes = ["Toutes", "Politique", "Economie", "Sport", "Culture", "Science", "Voyage"];
+
 function transformToDict(pureForm){
+    let themeSelector = document.getElementsByTagName("select");
     var formData = new FormData(pureForm);
     var formDataObject = {};
     formData.forEach(function(value, key){
-        console.log(key + " : " + value);
         formDataObject[key] = value;
     });
+    formDataObject["theme"] = themes[themeSelector[0].selectedIndex];
+    formDataObject["email"] = localStorage.getItem("user");
 
     return formDataObject;
 }

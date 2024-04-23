@@ -29,6 +29,7 @@ textarea {
     border: 1px solid #ccc;
     border-radius: 2px;
 }
+
 button[type="submit"] {
     width: 100%;
     padding: 10px;
@@ -38,6 +39,17 @@ button[type="submit"] {
     color: white;
     cursor: pointer;
 }
+
 button[type="submit"]:hover {
     background-color: #5058e5;
+}
+
+select{
+    width: 100%;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#selectLabel{
+    margin-top: 1em;
 }
