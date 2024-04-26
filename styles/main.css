@@ -231,16 +231,16 @@ body{
     overflow: hidden;
 }
 
-#contentWithWeather{
+#content-and-widgets{
     display: flex;
     align-items: flex-start;
+    justify-content: center;
 }
 
 #weather-widget{
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: 2em;
 }
 
 #weather-container{
@@ -337,4 +337,63 @@ body{
 
 #noResults{
     display: none;
+}
+
+
+#currency-converter{
+    margin-top: 5em;
+    width: 450px;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 15px;
+}
+
+#converter-header{
+    background-color: #070D30;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: large;
+    color: white;
+    width: 100%;
+    height: 70px;
+    border-radius: 15px 15px 0px 0px;
+}
+
+#currency-container{
+    padding: 3em;
+}
+
+.currency{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+}
+
+.currency img{
+    width: 3em;
+    border-radius: 3px;
+}
+
+.currency input{
+    height: 2em;
+}
+
+.currency div{
+    display: flex;
+    align-items: center;
+}
+
+.currency div p{
+    margin-left: 0.5em;
+    width: 1em;
+}
+
+#widgets-container{
+    display: flex;
+    flex-direction: column;
+    margin-left: 2em;
 }

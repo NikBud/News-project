@@ -1,4 +1,4 @@
-let themes = ["Toutes", "Politique", "Economie", "Sport", "Culture", "Science", "Voyage"];
+let themes = ["Politique", "Economie", "Sport", "Culture", "Science", "Voyage"];
 
 function transformToDict(pureForm){
     let themeSelector = document.getElementsByTagName("select");
@@ -27,7 +27,7 @@ async function sendRequest(formData){
         document.getElementById('reponseContaineur').innerHTML = `<p>${data.message}</p>`;
         window.location.replace("../html/main.html");
     })
-    .catch(error => console.error('Ошибка:', error));
+    .catch(error => console.error('Error:', error));
 }
 
 window.onload = () => {

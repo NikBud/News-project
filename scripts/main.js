@@ -19,6 +19,8 @@ controlImagesOptions = [
     "../images/color_circle.png"
 ]
 
+currencyNames = ["EUR", "USD", "GBP", "CHF"];
+
 function fetchAndDisplayNews(searchStr) {
     fetch(`../php_files/publication_news.php?search=${searchStr}&theme=${localStorage.getItem("theme")}`)
         .then(response => response.json()) 
@@ -259,6 +261,103 @@ function showImage() {
     weatherIcon.style.display = 'block';
 }
 
+function createCurrencies(){
+    let images = ["../images/eu.webp", "../images/US.svg", "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Flag_of_the_United_Kingdom_%281-2%29.svg/1200px-Flag_of_the_United_Kingdom_%281-2%29.svg.png", "https://uxwing.com/wp-content/themes/uxwing/download/flags-landmarks/switzerland-flag-icon.png"];
+    let currencySymbols = ["€", "$", "£", "SFr"];
+
+    let container = document.getElementById("currency-container");
+    for(let i = 0; i < 4; i++){
+        let currency = document.createElement("div");
+        currency.className = "currency";
+
+        let frstDiv = document.createElement("div");
+        let img = document.createElement("img");
+        img.src = images[i];
+        let currencyName = document.createElement("p");
+        currencyName.innerText = currencyNames[i];
+        frstDiv.appendChild(img);
+        frstDiv.appendChild(currencyName);
+
+        let secDiv = document.createElement("div");
+        let sumInput = document.createElement("input");
+        sumInput.id = "currency" + i;
+        let currencySymbol = document.createElement("p");
+        currencySymbol.innerText = currencySymbols[i];
+        secDiv.appendChild(sumInput);
+        secDiv.appendChild(currencySymbol);
+
+        currency.appendChild(frstDiv);
+        currency.appendChild(secDiv);
+        container.appendChild(currency);
+    }
+}
+
+function getCurrencyFromAPI(from, to, amount){
+    const options = {method: 'GET', headers: {accept: 'application/json'}};
+    return fetch(`https://api.fastforex.io/convert?from=${from}&to=${to}&amount=${amount}&api_key=6f04750422-4082314d17-scjrs9`, options)
+    .then(response => response.json())
+    .then(response => {
+        if (to == "EUR"){
+            return response.result.EUR
+        }
+        else if (to == "USD"){
+            return response.result.USD
+        }
+        else if (to == "GBP"){
+            return response.result.GBP
+        }
+        else if (to == "CHF"){
+            return response.result.CHF
+        }
+    })
+    .catch(err => console.error(err));
+}
+
+
+function createEventHandlers(){
+    let inputs = document.querySelectorAll(".currency input");
+
+    for(let i = 0; i < 4; i++){
+        const options = {method: 'GET', headers: {accept: 'application/json'}};
+
+        inputs[i].addEventListener("input", () => {
+            let id = inputs[i].id;
+            let baseCurrency = Number(id[8]);
+
+            let value = inputs[i].value;
+            if (value == ""){
+                inputs[i].value = "1";
+                value = 1;
+            }
+            else if (/^\d+$/.test(value) == false){
+                return;
+            }
+            
+
+            for(let j = 0; j < 4; j++){
+                if (j != baseCurrency){
+                    getCurrencyFromAPI(currencyNames[baseCurrency], currencyNames[j], value)
+                    .then(res => inputs[j].value = res);
+                }
+            }
+        });
+    }
+}
+
+
+function getCurrencyPrices(){
+    createCurrencies();
+    let inputs = document.querySelectorAll(".currency input");
+    inputs[0].value = 100;
+
+    for(let j = 1; j < 4; j++){
+        getCurrencyFromAPI(currencyNames[0], currencyNames[j], 100)
+        .then(val => inputs[j].value = val);
+    }
+    
+    createEventHandlers();
+}
+
 
 window.onload = () => {
     if (!localStorage.getItem("theme")){
@@ -270,6 +369,7 @@ window.onload = () => {
     var cityInput = document.getElementById("city");
     cityInput.value = "Nice";
     getWeather();
+    getCurrencyPrices();
 
 
     var searchInput = document.getElementById("searchInput");
