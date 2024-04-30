@@ -42,9 +42,11 @@ function fetchAndDisplayNews(searchStr) {
                 infoDiv.style.display = "none";
             }
 
+            let i = 0;
             data.forEach(news => {
                 const article = document.createElement('div');
                 article.className = 'article';
+                article.id = news.id;
 
                 const imgContainer = document.createElement('div');
                 imgContainer.className = 'img-container';
@@ -65,17 +67,34 @@ function fetchAndDisplayNews(searchStr) {
                 desc.className = "desc";
                 desc.textContent = news.content;
 
+                const dateAndBtn = document.createElement("div");
+                dateAndBtn.id = "date-and-btn";
                 const date = document.createElement('p');
                 date.textContent = news.date;
+                date.style.marginTop = "0px";
+                const commentBtn = document.createElement("button");
+                commentBtn.innerText = "View comments";
+                commentBtn.style.height = "2em";
+
+                dateAndBtn.appendChild(date);
+                dateAndBtn.appendChild(commentBtn);
+                dateAndBtn.style.display = "flex";
+                dateAndBtn.style.justifyContent = "space-between";
+                dateAndBtn.style.alignContent = "center";
+                dateAndBtn.style.marginTop = "1.7em";
+                commentBtn.addEventListener("click", () => {
+                    window.location = `../php_files/comments.php?id=${article.id}`;
+                });
                 
                 articleText.appendChild(h2);
                 articleText.appendChild(desc);
-                articleText.appendChild(date);
+                articleText.appendChild(dateAndBtn);
                 
                 article.appendChild(imgContainer);
                 article.appendChild(articleText);
 
                 container.appendChild(article)
+                i++;
             });
         })
         .catch(error => console.error('Ошибка загрузки новостей:', error));

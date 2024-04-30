@@ -10,6 +10,10 @@ function transformToDict(pureForm){
     formDataObject["theme"] = themes[themeSelector[0].selectedIndex];
     formDataObject["email"] = localStorage.getItem("user");
 
+    for (let key in formDataObject) {
+        formDataObject[key] = formDataObject[key].replace(/[\r\n]+/g, "");
+    }
+
     return formDataObject;
 }
 
