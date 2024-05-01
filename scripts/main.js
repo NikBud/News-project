@@ -7,11 +7,11 @@ carouselImages =[
 ]
 
 imageText = [
-    "TITLE NUMBER ONE",
-    "TITLE NUMBER TWO",
-    "TITLE NUMBER THREE",
-    "TITLE NUMBER FOUR",
-    "TITLE NUMBER FIVE"
+    "Accident majeur à Bécancour : trois morts et deux blessés",
+    "Is Bougainville the next battleground between China and the U.S.?",
+    "Trump condamné pour outrage, menacé d'incarcération' à son procès à New York",
+    "Quatre suspects mis en examen pour terrorisme après l'attentat en Russie",
+    "Pourquoi les moulins à vent ont-ils disparu ?"
 ]
 
 controlImagesOptions = [
@@ -110,7 +110,6 @@ function fetchAndDisplayNews(searchStr) {
                 dateAndBtn.style.display = "flex";
                 dateAndBtn.style.justifyContent = "space-between";
                 dateAndBtn.style.alignContent = "center";
-                dateAndBtn.style.marginTop = "1.7em";
                 commentBtn.addEventListener("click", () => {
                     window.location = `../php_files/comments.php?id=${article.id}`;
                 });
@@ -167,7 +166,7 @@ function carouselStart(){
         let img = document.createElement("img");
         let carouselCaption = document.createElement("div");
         carouselCaption.className = "carousel-caption";
-        let title = document.createElement("h3");
+        let title = document.createElement("h2");
         
         img.src = carouselImages[i];
         title.innerText = imageText[i];
