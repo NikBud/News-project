@@ -54,14 +54,43 @@ function fetchAndDisplayNews(searchStr) {
                 const img = document.createElement('img');
                 img.src = news.image;
                 imgContainer.appendChild(img);
+
+
+
+                img.addEventListener("click", function() {
+                    fetch(`../php_files/news.php?id=${news.id}`)
+                        .then(response => {
+                            if (response.ok) {
+                                window.location.href = response.url;
+                            } else {
+                                console.error('erreur');
+                            }
+                        })
+                        .catch(error => console.error('erreur', error));
+                });
                 
-                
+               
+            
                 const articleText = document.createElement('div');
                 articleText.className = "article-text";
                 
                 const h2 = document.createElement('h3');
                 h2.className = "title";
                 h2.textContent = news.title;
+
+
+                h2.addEventListener('click', () => {
+                    fetch(`../php_files/news.php?id=${news.id}`)
+                        .then(response => {
+                            if (response.ok) {
+                                window.location.href = response.url;
+                            } else {
+                                console.error('erreur');
+                            }
+                        })
+                        .catch(error => console.error('erreur', error));
+                });
+
 
                 const desc = document.createElement('p');
                 desc.className = "desc";

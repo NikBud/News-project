@@ -133,6 +133,7 @@ body{
     width: 100%;
     height: 100%;
     object-fit: cover;
+    cursor: pointer;
 }
 
 .title{
@@ -147,7 +148,7 @@ body{
 .title{
     flex: 0 0 25%; /* Занимают вместе 70% высоты .article-text */
     overflow: hidden;
-
+    cursor: pointer;
 }
 
 .desc{
