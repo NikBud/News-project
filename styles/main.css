@@ -57,6 +57,7 @@ body{
 
 #logo img {
     width: 40%;
+    cursor: pointer;
 }
 
 #blanc{
@@ -120,6 +121,7 @@ body{
 .article-text{
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     width: 60%;
     height: 100%;
 }
@@ -146,18 +148,20 @@ body{
 }
 
 .title{
-    flex: 0 0 25%; /* Занимают вместе 70% высоты .article-text */
+    margin-bottom: 1em;
     overflow: hidden;
     cursor: pointer;
 }
 
 .desc{
-    flex: 0 0 40%; /* Занимают вместе 70% высоты .article-text */
+    flex: 0 0 45%; /* Занимают вместе 70% высоты .article-text */
     overflow: hidden;
 }
 
-#date-and-btn { /* Предполагаем, что дата будет последним <p> в .article-text */
-    flex: 0 0 35%; /* Занимает оставшиеся 30% высоты */
+#date-and-btn p{
+    margin-bottom: 0px;
+    align-items: flex-end;
+    margin-top: 1em;
 }
 
 #addArticle{
