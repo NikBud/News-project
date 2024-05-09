@@ -40,9 +40,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comments</title>
-    <link rel="stylesheet" type="text/css" href="../styles/comments.css">
     <script src="../scripts/comments.js"></script>
+    <link rel="stylesheet" type="text/css" href="../styles/comments.css">
 </head>
+
 <body>
     <div id="content-container">
         <div id="comments-container">
